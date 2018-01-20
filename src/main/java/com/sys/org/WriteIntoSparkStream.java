@@ -17,10 +17,11 @@ import java.util.Set;
  **/
 public class WriteIntoSparkStream {
     public static void main(String[] args) throws InterruptedException {
+        org.apache.log4j.BasicConfigurator.configure();
         SparkConf conf = new SparkConf()
                 .setAppName("spak-streaming")
                 .setMaster("local[*]");
-        JavaStreamingContext ssc = new JavaStreamingContext(conf, new Duration(7000));
+        JavaStreamingContext ssc = new JavaStreamingContext(conf, new Duration(10000));
 
         Map<String, String> kafkaParams = new HashMap<>();
         kafkaParams.put("metadata.broker.list", "localhost:9092");
